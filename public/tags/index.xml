@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Linuxgeek</title>
+    <link>http://172.30.0.64/tags/</link>
+    <description>Recent content in Tags on Linuxgeek</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 04 Aug 2023 11:51:44 -0700</lastBuildDate><atom:link href="http://172.30.0.64/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>desktop</title>
+      <link>http://172.30.0.64/tags/desktop/</link>
+      <pubDate>Fri, 04 Aug 2023 11:51:44 -0700</pubDate>
+      
+      <guid>http://172.30.0.64/tags/desktop/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>i3wm</title>
+      <link>http://172.30.0.64/tags/i3wm/</link>
+      <pubDate>Fri, 04 Aug 2023 11:51:44 -0700</pubDate>
+      
+      <guid>http://172.30.0.64/tags/i3wm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux</title>
+      <link>http://172.30.0.64/tags/linux/</link>
+      <pubDate>Fri, 04 Aug 2023 11:51:44 -0700</pubDate>
+      
+      <guid>http://172.30.0.64/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>display</title>
+      <link>http://172.30.0.64/tags/display/</link>
+      <pubDate>Tue, 01 Aug 2023 12:01:22 -0700</pubDate>
+      
+      <guid>http://172.30.0.64/tags/display/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

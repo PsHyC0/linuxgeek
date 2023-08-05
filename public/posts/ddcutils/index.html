@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+
+<html lang="en" class="dark">
+<head>
+
+<title>Linuxgeek | ddcutils</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+    <link rel="apple-touch-icon" sizes="180x180" href='/favicon/apple-touch-icon.png'>
+    <link rel="icon" type="image/png" sizes="32x32" href='/favicon/favicon-32x32.png'>
+    <link rel="icon" type="image/png" sizes="16x16" href='/favicon/favicon-16x16.png'>
+    <link rel="manifest" href='/favicon/site.webmanifest' />
+    <link rel="mask-icon" href=' /favicon/safari-pinned-tab.svg' color="#5bbad5" />
+    <link rel="shortcut icon" href='/favicon/favicon.ico' />
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:title" content="Linuxgeek | ddcutils" />
+    
+    
+    
+    <link rel="stylesheet" href="/css/style.min.92245c3bd27417eb98c54b8447892fefe1c95449620cd8cb92b17d11b1313a9e.css" />
+    
+    <link href=' /css/blonde.min.css' rel="stylesheet" type="text/css" media="print"
+        onload="this.media=' all'">
+    
+
+
+
+<meta name="description" content="Note: This write-up was originally posted May 27, 2021. Some instructions may have changed since then. Let me know if you run into any problems.
+I found it frustrating constantly having to hit the buttons on one or more of my three monitors to change inputs between my work laptop, home PC and other devices. Figured there&rsquo;s gotta be a better way. I wanted a menu allowing me to switch things up via a keyboard shortcut.">
+<meta property="og:site_name" content="Linuxgeek">
+<meta property="og:description" content="Note: This write-up was originally posted May 27, 2021. Some instructions may have changed since then. Let me know if you run into any problems.
+I found it frustrating constantly having to hit the buttons on one or more of my three monitors to change inputs between my work laptop, home PC and other devices. Figured there&rsquo;s gotta be a better way. I wanted a menu allowing me to switch things up via a keyboard shortcut.">
+<meta property="og:url" content="http://172.30.0.64/posts/ddcutils/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="">
+
+<link rel="canonical" href="http://172.30.0.64/posts/ddcutils/">
+
+<meta name="twitter:description" content="Note: This write-up was originally posted May 27, 2021. Some instructions may have changed since then. Let me know if you run into any problems.
+I found it frustrating constantly having to hit the buttons on one or more of my three monitors to change inputs between my work laptop, home PC and other devices. Figured there&rsquo;s gotta be a better way. I wanted a menu allowing me to switch things up via a keyboard shortcut.">
+<meta property="article:published_time" content="2023-08-01T12:01:22-07:00">
+<meta property="article:updated_time" content="2023-08-01T12:01:22-07:00">
+
+
+
+
+
+    
+<meta property="og:image" content="http://172.30.0.64/img/monitors.jpg">
+<meta property="og:image:url" content="http://172.30.0.64/img/monitors.jpg">
+    
+
+    
+    <link rel="stylesheet" href='/css/custom.css'>
+    <i class="dark hidden"></i>
+</head>
+<body class="font-sans">
+    <div class="min-h-screen flex flex-col bg-gray-100 dark:bg-warmgray-800"><div class="bg-gray-800">
+    <div class="container max-w-screen-xl mr-auto ml-auto">
+        <nav class="flex items-center justify-between flex-wrap bg-gray-800 p-6">
+            <div class="flex items-center flex-no-shrink bg-gray-800 text-white mr-6">
+                <a href="http://172.30.0.64"><span class="font-semibold text-2xl tracking-tight">Linuxgeek</span></a>
+            </div>
+            <div class="flex md:hidden">
+                <div class="py-2">
+                    <button onclick="toggleDarkMode()" class="focus:outline-none mr-1" aria-label="Darkmode Toggle Button"><i id="icon"
+                            class="icon-moon inline-flex align-middle leading-normal text-lg text-white"></i></button>
+                    <span class="text-white">|</span>
+                </div>
+                <button id="hamburgerbtn" class="flex items-center px-3 py-1 text-white hover:opacity-50" aria-label="Hamburger Button">
+                    <span class="icon-menu text-2xl"></span>
+                </button>
+            </div>
+            <div class="hidden w-full md:flex md:flex-row sm:items-center md:w-auto" id="mobileMenu">
+                <div class="text-sm lg:flex-grow">
+                </div>
+                <div class="navmenu">
+                    
+                    <a href="/"
+                        class="no-underline duration-200 block mt-4 sm:inline-block sm:mt-0 text-white hover:opacity-50 mr-4">
+                        Home
+                    </a>
+                    
+                    <a href="/about/"
+                        class="no-underline duration-200 block mt-4 sm:inline-block sm:mt-0 text-white hover:opacity-50 mr-4">
+                        About
+                    </a>
+                    
+                    <a href="/contact/"
+                        class="no-underline duration-200 block mt-4 sm:inline-block sm:mt-0 text-white hover:opacity-50 mr-4">
+                        Contact
+                    </a>
+                    
+                </div>
+                <div class="text-white invisible md:visible">
+                    <span>|</span>
+                    <button onclick="toggleDarkMode()" class="focus-visible:outline-none" aria-label="Darkmode Toggle Button"><i id="icon2"
+                            class="icon-moon hover:opacity-50 duration-200 inline-flex align-middle leading-normal text-lg ml-2"></i></button>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<style>
+    .active {
+        display: block;
+    }
+</style>
+
+<script>
+    let hamburger = document.getElementById('hamburgerbtn');
+
+    let mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', function () {
+        mobileMenu.classList.toggle('active');
+    });
+</script>
+<div class="container max-w-screen-xl mx-auto mt-4 flex-grow px-5 lg:px-0" id="content">
+            <div class="lg:mx-5">
+<div class="grid grid-cols-3 gap-4">
+    
+    <div class="bg-white col-span-3 lg:col-span-2 p-5 dark:bg-warmgray-900 dark:text-white">
+        
+            <h1 class="title text-4xl font-bold mb-2">ddcutils</h1>
+            <div class="content prose md:prose-lg lg:prose-xl max-w-none dark:prose-invert py-1"><p><strong>Note:</strong> This write-up was originally posted May 27, 2021. Some instructions may have changed since then. Let me know if you run into any problems.</p>
+<p>I found it frustrating constantly having to hit the buttons on one or more of my three monitors to change inputs between my work laptop, home PC and other devices. Figured there&rsquo;s gotta be a better way. I wanted a menu allowing me to switch things up via a keyboard shortcut. Would also be great to power on and off monitors if possible.</p>
+<p>After some Googling, I came across the mention of ddc (DDC/CI (Display Data Channel Command Interface) tools to switch monitor inputs and other monitor related tasks from command line.</p>
+<p>Originally tried ddccontrol but it is outdated and possibly a dead project (last update 2006) and requires this library file for details on monitors. Didn&rsquo;t like that. Then I found ddcutil which is being actively developed and doesn&rsquo;t require stupid library files.</p>
+<p>Whats ddcutil you ask?</p>
+<p><em>ddcutil is a Linux program for managing monitor settings, such as brightness, color levels, and input source. Generally speaking, any setting that can be changed by pressing buttons on the monitor can be modified by ddcutil.</em></p>
+<p>This looks like exactly what I need.</p>
+<p>I attempted installing ddcutil from Debian packages via Opensuse Build Services (OBS) but it required some weird pci.ds package but that would break pciutils on MX Linux. Went to the source which is also much newer. Prerequisites are on the site if you run into any problems.</p>
+<p><strong>Note:</strong> These instructions were on MX Linux. Moved to Garuda/Arch and simply installed the package available there when I made the switch.</p>
+<pre tabindex="0"><code>$ git clone https://github.com/rockowitz/ddcutil.git
+$ cd ddcutil
+</code></pre><p>SUDO to root</p>
+<pre tabindex="0"><code># ./autogen.sh
+# ./configure
+# make
+# make install
+</code></pre><p>Now that its installed let&rsquo;s query the monitors. I used the &ndash;nousb option as I don&rsquo;t have USB monitors. The monitors are hooked up in order from left to right. 1,2,3.</p>
+<pre tabindex="0"><code>❯ ddcutil --nousb detect
+Display 1
+   I2C bus:  /dev/i2c-4
+   EDID synopsis:
+      Mfg id:               DELL
+      Model:                DELL P2719H
+      Product code:         453434
+      Serial number:        XXXXXXXXX
+      Binary serial number: 0 (0x00000000)
+      Manufacture year:     2016,  Week: 30
+   VCP version:         2.2
+
+Display 2
+   I2C bus:  /dev/i2c-5
+   EDID synopsis:
+      Mfg id:               DELL
+      Model:                DELL S3220DGF
+      Product code:         53492
+      Serial number:        6P7N4W2
+      Binary serial number: XXXXXXXXXXXX
+      Manufacture year:     2020,  Week: 15
+   VCP version:         2.1
+
+Display 3
+   I2C bus:  /dev/i2c-6
+   EDID synopsis:
+      Mfg id:               DELL
+      Model:                DELL P2719H
+      Product code:         453434
+      Serial number:        XXXXXXXXXXXXX
+      Binary serial number: 0 (0x00000000)
+      Manufacture year:     2016,  Week: 30
+   VCP version:         2.2
+</code></pre><p>Let&rsquo;s examine the capabilities of my monitors. Will look at monitor 3 (far right)</p>
+<pre tabindex="0"><code>$ ddcutil capabilities --display 3 --verbose  
+Produces a lot of information but I think what I want is the Input Source
+
+Feature: 60 (Input Source)
+      Values:
+         01: VGA-1
+         03: DVI-1
+         0f: DisplayPort-1
+</code></pre><p>To test switching the monitor via the physical buttons and see the difference.  While connected to Display Port</p>
+<pre tabindex="0"><code>❯ ddcutil --display 3 getvcp 60
+VCP code 0x60 (Input Source                  ): DisplayPort-1 (sl=0x0f)
+After switching to DVI
+
+❯ ddcutil --display 3 getvcp 60
+VCP code 0x60 (Input Source                  ): DVI-1 (sl=0x03)
+So I know DP1 is 0x0f and DVI is 0x03.  That is actually shown above too. Sweet.
+</code></pre><p>This switches monitors back and forth without touching the monitor</p>
+<pre tabindex="0"><code>❯ ddcutil --display 3 setvcp 60 0x03
+❯ ddcutil --display 3 setvcp 60 0x0f
+</code></pre><p>Checking my Center monitor the numbers are a little different:</p>
+<pre tabindex="0"><code>$ ddcutil capabilities --display 1   
+
+&lt;CUT&gt;
+Feature: 60 (Input Source)
+      Values:
+         0f: DisplayPort-1
+         11: HDMI-1
+         12: HDMI-2
+</code></pre><p>Create 6 scripts to change the two monitors inputs and 2 scripts to power off and on the monitors. Again&hellip;probably a cleaner way to do this but it works for me.</p>
+<p>I&rsquo;ll use a simple naming convention of LEFT_* or RIGHT_* with the different inputs. e.g. LEFT_DP.sh, LEFT_DVI.sh and LEFT_VGA.sh.</p>
+<pre tabindex="0"><code>❯ cat LEFT_DVI.sh
+#!/bin/sh
+ddcutil --display 1 setvcp 60 0x03
+❯ cat LEFT_DP.sh
+#!/bin/sh
+ddcutil --display 1 setvcp 60 0x0f
+❯ cat LEFT_VGA.sh
+#!/bin/sh
+ddcutil --display 1 setvcp 60 0x01
+</code></pre><p>Do the same for RIGHT monitor.</p>
+<p>Create two scripts for powering off and on the monitors.  You&rsquo;ll notice that I can turn off all 3 monitors and only turn on 2. That&rsquo;s because I need to be able to see menu to turn on all the monitors. So I simply hit the button on my left monitor and then use rofi menu to power on the middle and right one. Hope that makes ense.</p>
+<p>Lets look at Feature D6 (ddcutil capabilities &ndash;display # &ndash;verbose)</p>
+<p>Feature: D6 (Power mode)
+Values (unparsed): 01 02 03 04 05
+Values (  parsed):
+01: DPM: On,  DPMS: Off
+02: DPM: Off, DPMS: Standby
+03: DPM: Off, DPMS: Suspend
+04: DPM: Off, DPMS: Off
+05: Write only value to turn off display
+For Center Monitor</p>
+<p>Feature: D6 (Power mode)
+Values (unparsed): 01 04 05
+Values (  parsed):01: DPM: On,  DPMS: Off
+04: DPM: Off, DPMS: Off
+05: Write only value to turn off display</p>
+<pre tabindex="0"><code class="language-❯" data-lang="❯">#!/bin/sh
+ddcutil --nousb --display 2 setvcp D6 0x01
+ddcutil --nousb --display 3 setvcp D6 0x01
+❯ cat monitors_off.sh
+#!/bin/sh
+ddcutil --nousb --display 1 setvcp D6 0x04
+ddcutil --nousb --display 2 setvcp D6 0x04
+ddcutil --nousb --display 3 setvcp D6 0x04
+</code></pre><p>You can try each script above and make sure it works for you.</p>
+<p>To make things easier (and prettier) I created a custom menu with rofi to do this:</p>
+<p>$ sudo apt install rofi
+Created ~/bin/screen_menu.py
+Note: The script is a little messy and there&rsquo;s probably a more &ldquo;correct&rdquo; and cleaner way to do this. Let me know if you have any feedback. For my second (Center Dell 32&quot;) I don&rsquo;t currently have a need to switch inputs as it always stays on my main PC via Display Port. Change $USERNAME to your username.</p>
+<pre tabindex="0"><code>#!/usr/bin/python3
+
+# This script will allow me to switch one at a time or both at a time screens my Dell 27&#34; left and right monitors inputs and turn off all monitors and turn on the center and right one.
+
+# Utilizing DDCUTILS - https://www.ddcutil.com
+
+# Notes
+# Dell Main Monitor - Display 2
+# 	Inputs
+#         0f: DisplayPort-1 
+#         11: HDMI-1 
+#         12: HDMI-2
+
+# Right Dell Monitor - Display 3
+# Left Dell Monitor - Display 1
+#	Inputs
+#        01: VGA-1
+#        03: DVI-1 
+#        0f: DisplayPort-1
+
+import rofi_menu
+
+class Display1(rofi_menu.Menu):
+        prompt = &#34;Screen1 Inputs&#34;
+        items = [
+                rofi_menu.BackItem(),
+                rofi_menu.ShellItem(&#34;VGA&#34;, &#34;/home/$USERNAME/bin/LEFT_VGA.sh&#34;),
+                rofi_menu.ShellItem(&#34;DisplayPort&#34;, &#34;/home/$USERNAME/bin/LEFT_DP.sh&#34;),
+                rofi_menu.ShellItem(&#34;DVI&#34;, &#34;/home/$USERNAME/bin/LEFT_DVI.sh&#34;),
+        ]
+
+class Display3(rofi_menu.Menu):
+        prompt = &#34;Screen3 Inputs&#34;
+        items = [
+                rofi_menu.BackItem(),
+                rofi_menu.ShellItem(&#34;VGA&#34;, &#34;/home/$USERNAME/bin/RIGHT_VGA.sh&#34;),
+                rofi_menu.ShellItem(&#34;DisplayPort&#34;, &#34;/home/$USERNAME/bin/RIGHT_DP.sh&#34;),
+                rofi_menu.ShellItem(&#34;DVI&#34;, &#34;/home/$USERNAME/bin/RIGHT_DVI.sh&#34;),
+        ]
+
+class Power(rofi_menu.Menu):
+        prompt = &#34;Monitor Power&#34;
+        items = [
+                rofi_menu.BackItem(),
+                rofi_menu.ShellItem(&#34;On&#34;, &#34;/home/$USERNAME/bin/monitors_on.sh&#34;),
+                rofi_menu.ShellItem(&#34;Off&#34;, &#34;/home/$USERNAME/bin/monitors_off.sh&#34;),
+        ]
+
+
+class MainMenu(rofi_menu.Menu):
+    prompt = &#34;Menu&#34;
+    items = [
+	rofi_menu.BackItem(),
+        rofi_menu.NestedMenu(&#34;Screen1 Inputs &gt;&#34;, Display1()),
+        rofi_menu.NestedMenu(&#34;Screen3 Inputs &gt;&#34;, Display3()),
+        rofi_menu.NestedMenu(&#34;Monitor Power  &gt;&#34;, Power()),
+	    ]
+
+
+if __name__ == &#34;__main__&#34;:
+    rofi_menu.run(MainMenu())
+</code></pre><p>To test you can run:</p>
+<pre tabindex="0"><code>rofi -modi mymenu:/home/$USERNAME/bin/screen_menu.py -show displaymenu 
+</code></pre><p>I&rsquo;m using I3wm so I&rsquo;ll map a keyboard shortcut to bring up this particular rofi menu. I already have $mod+d to bring up rofi&rsquo;s main menu.</p>
+<pre tabindex="0"><code>$ nano ~/.config/i3/config   
+</code></pre><p>Add the following line (all one line). Change $USERNAME to your username obviously</p>
+<pre tabindex="0"><code>bindsym $mod+Ctrl+d exec rofi -modi mymenu:/home/$USERNAME/bin/screen_menu.py -show mymenu
+</code></pre><p>Hope this helps. Let me know if you have any feedback or comments.</p>
+</div>
+        </div>
+        
+            <div class="hidden lg:block lg:col-span-1">
+    
+    
+            
+            <div class="mb-3">
+    <form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+        <label>
+            <input class="w-full p-3 focus:outline-none dark:bg-warmgray-900 dark:text-white placeholder-gray-700 dark:placeholder-gray-300" type="search"
+                placeholder="Search..." value="" name="q" aria-label="Search">
+        </label>
+        <input class="hidden" type="submit" value="Search">
+        <input type="hidden" name="sitesearch" value="http://172.30.0.64" />
+    </form>
+</div>
+        
+            
+            <div class="bg-white panel mb-3 pb-5 dark:bg-warmgray-900">
+    <p class="text-xl text-center text-gray-700 py-3 px-3 dark:text-gray-300 font-bold">Archives</p>
+    
+    
+    
+</div>
+        
+            
+            
+        
+            
+            
+<div class="bg-white panel mb-3 dark:bg-warmgray-900">
+    <p class="text-xl text-center text-gray-700 py-3 pl-3 dark:text-gray-300 font-bold">Tags</p>
+    <div class="panel-block p-2">
+        <a href='/tags/desktop'>
+            <span
+                class="duration-100 inline-flex py-2 leading-4 mr-2 mb-2 content-center bg-gray-100 justify-center h-8 px-3 text-blue-500 hover:text-blue-900 dark:bg-warmgray-800">
+                desktop
+            </span></a>
+        <a href='/tags/display'>
+            <span
+                class="duration-100 inline-flex py-2 leading-4 mr-2 mb-2 content-center bg-gray-100 justify-center h-8 px-3 text-blue-500 hover:text-blue-900 dark:bg-warmgray-800">
+                display
+            </span></a>
+        <a href='/tags/i3wm'>
+            <span
+                class="duration-100 inline-flex py-2 leading-4 mr-2 mb-2 content-center bg-gray-100 justify-center h-8 px-3 text-blue-500 hover:text-blue-900 dark:bg-warmgray-800">
+                i3wm
+            </span></a>
+        <a href='/tags/linux'>
+            <span
+                class="duration-100 inline-flex py-2 leading-4 mr-2 mb-2 content-center bg-gray-100 justify-center h-8 px-3 text-blue-500 hover:text-blue-900 dark:bg-warmgray-800">
+                linux
+            </span></a>
+    </div>
+</div>
+
+
+        
+            
+            
+
+<div class="bg-white panel mb-3 pb-5 dark:bg-warmgray-900">
+    <p class="text-xl text-center text-gray-700 py-5 dark:text-gray-300 font-bold">Recent Posts</p>
+    <div class="mx-6">
+        <a href="/posts/i3path/" class="">
+            <div
+                class="w-full block mt-3 bg-white hover:bg-gray-100 duration-200 dark:bg-warmgray-900 dark:text-gray-200 dark:hover:bg-warmgray-800">
+                <div class="px-2">
+                    <div class="text-gray-900 font-bold text-xl dark:text-white">I3WM path</div>
+                    <p class="text-sm text-gray-600 flex items-center pb-1 dark:text-gray-400">
+                        <time><span class="icon-access_time mr-1"></span>2023/08/04</time>
+                    </p>
+                </div>
+            </div>
+        </a>
+        <a href="/posts/ddcutils/" class="">
+            <div
+                class="w-full block mt-3 bg-white hover:bg-gray-100 duration-200 dark:bg-warmgray-900 dark:text-gray-200 dark:hover:bg-warmgray-800">
+                <div class="px-2">
+                    <div class="text-gray-900 font-bold text-xl dark:text-white">ddcutils</div>
+                    <p class="text-sm text-gray-600 flex items-center pb-1 dark:text-gray-400">
+                        <time><span class="icon-access_time mr-1"></span>2023/08/01</time>
+                    </p>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
+        
+    
+</div>
+        
+    </div>
+    
+            </div>
+        </div><footer class="bg-gray-800 text-white p-6">
+  
+  <div class="container max-w-screen-xl mr-auto ml-auto">
+    <p>&copy; 2023 <a href="http://172.30.0.64" class="duration-200 hover:opacity-50">Linuxgeek</a>
+    </p>
+    <p>Powered by <a href="https://gohugo.io/" class="duration-200 hover:opacity-50">Hugo</a>, Theme <a
+        href="https://github.com/opera7133/Blonde" class="duration-200 hover:opacity-50">Blonde</a>.</p>
+  </div>
+  
+  <script>
+    var icon = document.getElementById("icon");
+    var icon2 = document.getElementById("icon2");
+    
+    if (document.documentElement.classList.contains("dark") || localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      icon.classList.remove("icon-moon");
+      icon.classList.add("icon-sun");
+      icon2.classList.remove("icon-moon");
+      icon2.classList.add("icon-sun");
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    function toggleDarkMode() {
+      if (document.documentElement.classList.contains('dark')) {
+        icon.classList.remove("icon-sun");
+        icon.classList.add("icon-moon");
+        icon2.classList.remove("icon-sun");
+        icon2.classList.add("icon-moon");
+        document.documentElement.classList.remove('dark')
+        localStorage.theme = 'light'
+      } else {
+        icon.classList.remove("icon-moon");
+        icon.classList.add("icon-sun");
+        icon2.classList.remove("icon-moon");
+        icon2.classList.add("icon-sun");
+        document.documentElement.classList.add('dark')
+        localStorage.theme = 'dark'
+      }
+    }
+  </script>
+</footer></div>
+</body>
+
+</html>
