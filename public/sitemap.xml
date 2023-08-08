@@ -2,38 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://172.30.0.64/tags/desktop/</loc>
+    <loc>http://linuxgeek.ca/tags/desktop/</loc>
     <lastmod>2023-08-04T11:51:44-07:00</lastmod>
   </url><url>
-    <loc>http://172.30.0.64/tags/i3wm/</loc>
+    <loc>http://linuxgeek.ca/tags/i3wm/</loc>
     <lastmod>2023-08-04T11:51:44-07:00</lastmod>
   </url><url>
-    <loc>http://172.30.0.64/posts/i3path/</loc>
+    <loc>http://linuxgeek.ca/posts/i3path/</loc>
     <lastmod>2023-08-04T11:51:44-07:00</lastmod>
   </url><url>
-    <loc>http://172.30.0.64/tags/linux/</loc>
+    <loc>http://linuxgeek.ca/tags/linux/</loc>
     <lastmod>2023-08-04T11:51:44-07:00</lastmod>
   </url><url>
-    <loc>http://172.30.0.64/</loc>
+    <loc>http://linuxgeek.ca/</loc>
     <lastmod>2023-08-04T11:51:44-07:00</lastmod>
   </url><url>
-    <loc>http://172.30.0.64/posts/</loc>
+    <loc>http://linuxgeek.ca/posts/</loc>
     <lastmod>2023-08-04T11:51:44-07:00</lastmod>
   </url><url>
-    <loc>http://172.30.0.64/tags/</loc>
+    <loc>http://linuxgeek.ca/tags/</loc>
     <lastmod>2023-08-04T11:51:44-07:00</lastmod>
   </url><url>
-    <loc>http://172.30.0.64/posts/ddcutils/</loc>
+    <loc>http://linuxgeek.ca/posts/ddcutils/</loc>
     <lastmod>2023-08-01T12:01:22-07:00</lastmod>
   </url><url>
-    <loc>http://172.30.0.64/tags/display/</loc>
+    <loc>http://linuxgeek.ca/tags/display/</loc>
     <lastmod>2023-08-01T12:01:22-07:00</lastmod>
   </url><url>
-    <loc>http://172.30.0.64/about/</loc>
+    <loc>http://linuxgeek.ca/about/</loc>
     <lastmod>2023-08-01T11:56:57-07:00</lastmod>
   </url><url>
-    <loc>http://172.30.0.64/archives/</loc>
+    <loc>http://linuxgeek.ca/archives/</loc>
   </url><url>
-    <loc>http://172.30.0.64/categories/</loc>
+    <loc>http://linuxgeek.ca/categories/</loc>
   </url>
 </urlset>

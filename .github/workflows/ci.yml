@@ -1,0 +1,43 @@
+# name of your action
+name: ci
+
+on:
+  push:
+    branches:
+    # only run the action when you push to main branch
+      - main
+    paths-ignore:
+    # don't run the action if any of these files are modified
+      - 'README.md' 
+      - '.gitignore'
+
+  # adds ability to run the action manually from the actions tab on github
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    # checkout the latest commit
+    - uses: actions/checkout@v3
+    # setup hugo
+    - name: setup hugo
+      uses: peaceiris/actions-hugo@v2
+      with:
+        hugo-version: 'latest'
+    # build your project
+    - name: build hugo
+      run: hugo --minify
+    # deploy to vps using rsync
+    - name: deploy website
+      uses: easingthemes/ssh-deploy@main
+      env:
+        ARGS: "-vrp --delete"
+        # github secret - https://docs.github.com/en/actions/security-guides/encrypted-secrets
+        SSH_PRIVATE_KEY: ${{ secrets.key }} # you can use password instead, check the docs
+        REMOTE_HOST: ${{ secrets.host }}
+        REMOTE_PORT: ${{ secrets.port }}
+        REMOTE_USER: ${{ secrets.user }}
+        # change this to your nginx page root
+        TARGET: "~/www/nginx"
+        SOURCE: "public/"

@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>display on Linuxgeek</title>
-    <link>http://172.30.0.64/tags/display/</link>
+    <link>http://linuxgeek.ca/tags/display/</link>
     <description>Recent content in display on Linuxgeek</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 01 Aug 2023 12:01:22 -0700</lastBuildDate><atom:link href="http://172.30.0.64/tags/display/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 01 Aug 2023 12:01:22 -0700</lastBuildDate><atom:link href="http://linuxgeek.ca/tags/display/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ddcutils</title>
-      <link>http://172.30.0.64/posts/ddcutils/</link>
+      <link>http://linuxgeek.ca/posts/ddcutils/</link>
       <pubDate>Tue, 01 Aug 2023 12:01:22 -0700</pubDate>
       
-      <guid>http://172.30.0.64/posts/ddcutils/</guid>
+      <guid>http://linuxgeek.ca/posts/ddcutils/</guid>
       <description>Note: This write-up was originally posted May 27, 2021. Some instructions may have changed since then. Let me know if you run into any problems.
 I found it frustrating constantly having to hit the buttons on one or more of my three monitors to change inputs between my work laptop, home PC and other devices. Figured there&amp;rsquo;s gotta be a better way. I wanted a menu allowing me to switch things up via a keyboard shortcut.</description>
     </item>
